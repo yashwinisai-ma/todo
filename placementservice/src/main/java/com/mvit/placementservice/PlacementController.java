@@ -1,13 +1,13 @@
 package com.mvit.placementservice;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
 public class PlacementController {
 
-	@Autowired
+    @Autowired
     private PlacementService placementService;
 
     // Retrieve all placements
@@ -19,6 +19,7 @@ public class PlacementController {
     // Add a new placement
     @PostMapping("/placement")
     public Placement addPlacement(@RequestBody Placement placement) {
+        // New fields like location, driveDate, jobDescription, and workType will automatically be handled
         return placementService.addPlacement(placement);
     }
 
@@ -31,6 +32,7 @@ public class PlacementController {
     // Update placement details
     @PutMapping("/placement/{id}")
     public Placement updatePlacement(@PathVariable Long id, @RequestBody Placement placement) {
+        // Updated placement will now include new fields (location, driveDate, jobDescription, workType)
         return placementService.updatePlacement(id, placement);
     }
 
@@ -39,5 +41,4 @@ public class PlacementController {
     public void deletePlacement(@PathVariable Long id) {
         placementService.deletePlacement(id);
     }
-
 }
